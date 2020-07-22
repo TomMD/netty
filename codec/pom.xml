@@ -30,6 +30,7 @@
 
   <properties>
     <javaModuleName>io.netty.codec</javaModuleName>
+    <ztsd-version>1.4.5-5</ztsd-version>
   </properties>
 
   <dependencies>
@@ -83,6 +84,12 @@
       <artifactId>lzma-java</artifactId>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>com.github.luben</groupId>
+      <artifactId>zstd-jni</artifactId>
+      <version>${ztsd-version}</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.mockito</groupId>
