@@ -71,7 +71,7 @@ public class ZstdEncoderTest {
         Assert.assertEquals(sample, target.toString(Charset.defaultCharset()));
     }
 
-    public static String randomString(int length) {
+    private static String randomString(int length) {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
@@ -80,5 +80,4 @@ public class ZstdEncoderTest {
 
         return sb.toString();
     }
-
 }

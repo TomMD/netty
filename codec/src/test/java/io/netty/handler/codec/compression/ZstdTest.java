@@ -70,7 +70,7 @@ public class ZstdTest {
     }
 
 
-    public static String randomString(int length) {
+    private static String randomString(int length) {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {

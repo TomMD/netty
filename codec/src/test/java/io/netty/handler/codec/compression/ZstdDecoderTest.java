@@ -159,7 +159,7 @@ public class ZstdDecoderTest {
         return byteBuf;
     }
 
-    protected int randomInt(int start, int end) {
+    private int randomInt(int start, int end) {
 
         Random random = new Random();
         return start + random.nextInt(end - start + 1);
