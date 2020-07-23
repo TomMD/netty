@@ -27,17 +27,11 @@ public class ZstdDecoder extends ByteToMessageDecoder {
     }
 
     private State currentState = State.INIT_BLOCK;
-
     private final Adler32 checksum = new Adler32();
-
     private int blockType;
-
     private int compressedLength;
-
     private int decompressedLength;
-
     private int currentChecksum;
-
     private boolean validateCheckSum;
 
     public ZstdDecoder() {

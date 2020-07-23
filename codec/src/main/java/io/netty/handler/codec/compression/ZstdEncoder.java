@@ -30,26 +30,17 @@ public class ZstdEncoder extends MessageToByteEncoder<ByteBuf> {
     private static final EncoderException ENCODE_FINSHED_EXCEPTION = unknownStackTrace(new EncoderException(
                     new IllegalStateException("encode finished and not enough space to write remaining data")),
             ZstdEncoder.class, "encode");
-
     private final int blockSize;
-
     private final Adler32 checksum = new Adler32();
-
     private final int compressionLevel;
-
     private ByteBuf buffer;
-
     private final int maxEncodeSize;
-
     private volatile boolean finished;
-
     private volatile ChannelHandlerContext ctx;
-
 
     public ZstdEncoder() {
         this(DEFAULT_BLOCK_SIZE, MAX_BLOCK_SIZE);
     }
-
 
     public ZstdEncoder(int blockSize, int maxEncodeSize) {
         super(true);
@@ -234,16 +225,13 @@ public class ZstdEncoder extends MessageToByteEncoder<ByteBuf> {
         return ctx.writeAndFlush(footer, promise);
     }
 
-
     public boolean isClosed() {
         return finished;
     }
 
-
     public ChannelFuture close() {
         return close(ctx().newPromise());
     }
-
 
     public ChannelFuture close(final ChannelPromise promise) {
         ChannelHandlerContext ctx = ctx();

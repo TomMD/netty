@@ -36,15 +36,12 @@ public class ZstdTest {
 
         ByteBuf output = Unpooled.directBuffer(DEFAULT_BLOCK_SIZE);
         ByteBuffer outputBuffer = output.internalNioBuffer(output.writerIndex(), output.writableBytes());
-
         ByteBuffer inputBuffer = target.internalNioBuffer(target.readerIndex() + HEADER_LENGTH, target.readableBytes() - HEADER_LENGTH);
-
 
         Zstd.decompress(outputBuffer, inputBuffer);
 
         outputBuffer.flip();
         output = Unpooled.wrappedBuffer(outputBuffer);
-
         String val = output.toString(Charset.defaultCharset());
 
         Assert.assertEquals(sample, val);
@@ -60,7 +57,6 @@ public class ZstdTest {
         Assert.assertTrue(writable);
         ByteBuf buf = channel.readOutbound();
         Assert.assertNotNull(buf);
-
         Assert.assertTrue(channel.writeInbound(buf));
 
         buf = channel.readInbound();
@@ -69,8 +65,7 @@ public class ZstdTest {
         Assert.assertEquals(sample, val);
     }
 
-
-    private static String randomString(int length) {
+    public static String randomString(int length) {
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
@@ -79,5 +74,4 @@ public class ZstdTest {
 
         return sb.toString();
     }
-
 }

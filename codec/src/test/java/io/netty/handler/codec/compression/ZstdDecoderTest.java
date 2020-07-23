@@ -25,7 +25,6 @@ public class ZstdDecoderTest {
 
     @Test
     public void testDecodeWithOneBlockSize() {
-
         testTemplate(DEFAULT_BLOCK_SIZE);
     }
 
@@ -85,7 +84,6 @@ public class ZstdDecoderTest {
         }
     }
 
-
     @Test
     public void testTcpPacketMergedFraming() {
 
@@ -125,7 +123,6 @@ public class ZstdDecoderTest {
     private ByteBuf getCompressedByteBuf(String sample) {
 
         ByteBuf byteBuf = getInputByteBuf(sample);
-
         Assert.assertTrue(channel.writeOutbound(byteBuf));
 
         ByteBuf compressed = channel.readOutbound();
@@ -140,10 +137,8 @@ public class ZstdDecoderTest {
         ByteBuf compressed = getCompressedByteBuf(sample);
 
         Assert.assertTrue(channel.writeInbound(compressed));
-
         ByteBuf decompressed = Unpooled.buffer(length);
         mergeOutput(decompressed);
-
 
         String result = decompressed.toString(Charset.defaultCharset());
         Assert.assertEquals(sample.length(), result.length());
@@ -160,9 +155,7 @@ public class ZstdDecoderTest {
     }
 
     private int randomInt(int start, int end) {
-
         Random random = new Random();
         return start + random.nextInt(end - start + 1);
     }
-
 }
